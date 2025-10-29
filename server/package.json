@@ -1,0 +1,25 @@
+{
+  "name": "assignment-server",
+  "version": "1.0.0",
+  "description": "Backend for internship assignment: Auth, RBAC, Tasks CRUD, Swagger",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env src/server.js",
+    "start": "node src/server.js",
+    "lint": "echo 'no linter configured'"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.6.0",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

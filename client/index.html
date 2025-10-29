@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header glass">
+            <h1>
+                <span>✨</span> Task Manager
+            </h1>
+            <div class="user-info" id="userInfo" style="display: none;">
+                <div class="user-avatar" id="userAvatar"></div>
+                <span id="userName"></span>
+                <span id="userRole" class="role-badge"></span>
+                <button id="logoutBtn" class="btn btn-secondary btn-sm">🚪 Logout</button>
+            </div>
+        </header>
+
+        <!-- Auth Section -->
+        <div id="authSection" class="section glass">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">🔐 Login</button>
+                    <button class="tab-btn" data-tab="register">✍️ Register</button>
+                </div>
+
+                <!-- Login Form -->
+                <div id="loginForm" class="auth-form">
+                    <h2>Welcome Back</h2>
+                    <form id="loginFormElement">
+                        <div class="form-group">
+                            <label for="loginEmail">📧 Email</label>
+                            <input type="email" id="loginEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="loginPassword">🔒 Password</label>
+                            <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            <span>→</span> Sign In
+                        </button>
+                    </form>
+                    <div id="loginError" class="error-message"></div>
+                </div>
+
+                <!-- Register Form -->
+                <div id="registerForm" class="auth-form" style="display: none;">
+                    <h2>Create Account</h2>
+                    <form id="registerFormElement">
+                        <div class="form-group">
+                            <label for="registerName">👤 Name</label>
+                            <input type="text" id="registerName" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerEmail">📧 Email</label>
+                            <input type="email" id="registerEmail" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerPassword">🔒 Password</label>
+                            <input type="password" id="registerPassword" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerConfirmPassword">🔒 Confirm Password</label>
+                            <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="registerRole">🎭 Role</label>
+                            <select id="registerRole">
+                                <option value="user">User</option>
+                                <option value="admin">Admin</option>
+                            </select>
+                        </div>
+                        <button type="submit" id="registerSubmitBtn" class="btn btn-primary">
+                            <span>✨</span> Create Account
+                        </button>
+                    </form>
+                    <div id="registerError" class="error-message"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Section -->
+        <div id="tasksSection" class="section glass" style="display: none;">
+            <!-- Task Form -->
+            <div class="task-form">
+                <h2><span>➕</span> Add New Task</h2>
+                <form id="taskForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskTitle">Title</label>
+                            <input type="text" id="taskTitle" placeholder="What needs to be done?" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="taskDescription">Description</label>
+                            <input type="text" id="taskDescription" placeholder="Add details (optional)">
+                        </div>
+                        <div class="form-group">
+                            <label>&nbsp;</label>
+                            <button type="submit" class="btn btn-primary">
+                                <span>+</span> Add
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Task Stats -->
+            <div class="task-stats">
+                <div class="stat-card glass">
+                    <div class="stat-icon">📊</div>
+                    <span class="stat-value" id="totalTasks">0</span>
+                    <span class="stat-label">Total Tasks</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon">✅</div>
+                    <span class="stat-value" id="completedTasks">0</span>
+                    <span class="stat-label">Completed</span>
+                </div>
+                <div class="stat-card glass">
+                    <div class="stat-icon">⏳</div>
+                    <span class="stat-value" id="pendingTasks">0</span>
+                    <span class="stat-label">Pending</span>
+                </div>
+            </div>
+
+            <!-- Admin Section -->
+            <div id="adminSection" style="display: none;" class="admin-section">
+                <button id="viewAllTasksBtn" class="btn btn-secondary">
+                    <span>👥</span> View All Users' Tasks
+                </button>
+            </div>
+
+            <!-- Tasks List -->
+            <div class="tasks-container">
+                <h2><span>📋</span> Your Tasks</h2>
+                <div id="tasksList" class="tasks-list"></div>
+                <div id="loadingMessage" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Loading tasks...</p>
+                </div>
+                <div id="emptyMessage" class="empty-state" style="display: none;">
+                    <div class="empty-icon">📝</div>
+                    <p>No tasks yet. Create your first task to get started!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
